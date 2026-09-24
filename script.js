@@ -9,46 +9,18 @@ const animals = [
 	{ id: 8, name: "Beowulf", species: "dog", age: 7, adopted: true },
 ];
 
-// Instructions for every task are in README.md.
-// Write your code below each heading,
-// Be sure to add your own comments to the code you are writing
+// Keep just the names for a simple roster, leaving the original objects intact.
+const animalNames = animals.map((animal) => animal.name);
+console.log(animalNames);
 
-// ---------------------------------------------------------------------------
-// Task 1 — Animal names with .map()
-// ---------------------------------------------------------------------------
+// Print each animal's identity; forEach runs this callback once per animal.
+animals.forEach((animal) => {
+	console.log(`Name: ${animal.name} Species: ${animal.species}`);
+});
 
-// ---------------------------------------------------------------------------
-// Task 2 — Log each animal with .forEach()
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 3 — Log each animal again with for...of
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 4 — Adopted and available animals with .filter()
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 5 — Available dogs with method chaining
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 6 — Average age with .reduce()
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 7 — Write isCat, isAdopted, and getName
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 8 — Adopted cats, using your own functions as callbacks
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 9 — Write makeSpeciesChecker (a closure)
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Task 10 — Build isDog and isRabbit, then log their names
-// ---------------------------------------------------------------------------
+// Show age and adoption status for every animal so we can review their details.
+// for...of runs a loop body directly and allows break or continue;
+// forEach calls a function for each item and cannot be stopped with break.
+for (const animal of animals) {
+	console.log(`Age: ${animal.age} Adopted: ${animal.adopted}`);
+}
