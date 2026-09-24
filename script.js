@@ -40,3 +40,35 @@ console.log(availableDogs);
 // Start the age total at zero, then divide by the roster size to find the mean.
 const averageAge = animals.reduce((total, animal) => total + animal.age, 0) / animals.length;
 console.log(averageAge);
+
+// Give the species test, adoption test, and name lookup reusable names so later
+// chains can describe their purpose without repeating callback logic.
+function isCat(animal) {
+	return animal.species === "cat";
+}
+
+function isAdopted(animal) {
+	return animal.adopted;
+}
+
+function getName(animal) {
+	return animal.name;
+}
+
+// Pass the functions themselves as callbacks to select adopted cats and list their names.
+const adoptedCats = animals.filter(isCat).filter(isAdopted).map(getName);
+console.log(adoptedCats);
+
+// Each returned function remembers the species from its own factory call.
+// This closure lets us create different species tests from the same logic.
+function makeSpeciesChecker(species) {
+	return function (animal) {
+		return animal.species === species;
+	};
+}
+
+// Create independent dog and rabbit checks, then reuse the name lookup for each roster.
+const isDog = makeSpeciesChecker("dog");
+const isRabbit = makeSpeciesChecker("rabbit");
+console.log(animals.filter(isDog).map(getName));
+console.log(animals.filter(isRabbit).map(getName));
