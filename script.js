@@ -24,3 +24,19 @@ animals.forEach((animal) => {
 for (const animal of animals) {
 	console.log(`Age: ${animal.age} Adopted: ${animal.adopted}`);
 }
+
+// Separate adopted animals from those still waiting for homes without changing the roster.
+const adoptedAnimals = animals.filter((animal) => animal.adopted);
+const availableAnimals = animals.filter((animal) => !animal.adopted);
+console.log(adoptedAnimals);
+console.log(availableAnimals);
+
+// Only unadopted dogs belong in this list; extract names after checking both conditions.
+const availableDogs = animals
+	.filter((animal) => animal.species === "dog" && !animal.adopted)
+	.map((animal) => animal.name);
+console.log(availableDogs);
+
+// Start the age total at zero, then divide by the roster size to find the mean.
+const averageAge = animals.reduce((total, animal) => total + animal.age, 0) / animals.length;
+console.log(averageAge);
