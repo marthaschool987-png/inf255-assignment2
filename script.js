@@ -60,7 +60,7 @@ const adoptedCats = animals.filter(isCat).filter(isAdopted).map(getName);
 console.log(adoptedCats);
 
 // Each returned function remembers the species from its own factory call.
-// This closure lets us create different species tests from the same logic.
+// The remembered species stays available after makeSpeciesChecker returns.
 function makeSpeciesChecker(species) {
 	return function (animal) {
 		return animal.species === species;
